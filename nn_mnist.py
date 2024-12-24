@@ -20,6 +20,7 @@ print("[INFO] samples: {}, dim: {}".format(data.shape[0], data.shape[1]))
 # convert the labels from integers to vectors
 trainY = LabelBinarizer().fit_transform(trainY)
 testY = LabelBinarizer().fit_transform(testY)
+print(trainY.shape, testY.shape)
 
 # train the network
 print("[INFO] training network...")
@@ -31,6 +32,7 @@ nn.fit(trainX, trainY, epochs=1000)
 print("[INFO] evaluating network...")
 predictions = nn.predict(testX)
 predictions = predictions.argmax(axis=1)
+print(predictions.shape)
 print(classification_report(testY.argmax(axis=1), predictions))
 
 

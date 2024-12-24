@@ -125,13 +125,13 @@ class NeuralNetwork:
             # matrix (bias)
             p = np.c_[p, np.ones((p.shape[0]))]
             # loop over our layers in the network
-            for layer in np.arange(0, len(self.W)):
-                # computing the output prediction is as simple as taking
-                # the dot product between the current activation value ‘p‘
-                # and the weight matrix associated with the current layer,
-                # then passing this value through a nonlinear activation
-                # function
-                p = self.sigmoid(np.dot(p, self.W[layer]))
+        for layer in np.arange(0, len(self.W)):
+            # computing the output prediction is as simple as taking
+            # the dot product between the current activation value ‘p‘
+            # and the weight matrix associated with the current layer,
+            # then passing this value through a nonlinear activation
+            # function
+            p = self.sigmoid(np.dot(p, self.W[layer]))
         # return the predicted value
         return p
     
@@ -140,7 +140,6 @@ class NeuralNetwork:
         # the loss
         targets = np.atleast_2d(targets)
         predictions = self.predict(X, addBias=False)
-        print(f"predictions.shape: {predictions.shape}, targets.shape: {targets.shape}")
         loss = 0.5 * np.sum((predictions - targets) ** 2)
         # return the loss
         return loss
